@@ -268,6 +268,25 @@
      </item>
     </layout>
    </widget>
+   <widget class="QLabel" name="lab_wynCalka">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>170</y>
+      <width>449</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::PlainText</enum>
+    </property>
+    <property name="textInteractionFlags">
+     <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionFile">
@@ -299,8 +318,8 @@
    <slot>fun_calka()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>81</x>
-     <y>113</y>
+     <x>82</x>
+     <y>111</y>
     </hint>
     <hint type="destinationlabel">
      <x>10</x>
@@ -315,8 +334,8 @@
    <slot>fun_pochodna()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>213</x>
-     <y>113</y>
+     <x>211</x>
+     <y>110</y>
     </hint>
     <hint type="destinationlabel">
      <x>197</x>
@@ -331,8 +350,8 @@
    <slot>fun_wykres()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>313</x>
-     <y>113</y>
+     <x>309</x>
+     <y>110</y>
     </hint>
     <hint type="destinationlabel">
      <x>305</x>
@@ -347,8 +366,8 @@
    <slot>fun_wynikRownania()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>420</x>
-     <y>113</y>
+     <x>411</x>
+     <y>110</y>
     </hint>
     <hint type="destinationlabel">
      <x>385</x>
@@ -364,7 +383,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>525</x>
-     <y>113</y>
+     <y>111</y>
     </hint>
     <hint type="destinationlabel">
      <x>468</x>
@@ -379,12 +398,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>159</x>
-     <y>161</y>
+     <x>148</x>
+     <y>160</y>
     </hint>
     <hint type="destinationlabel">
-     <x>136</x>
-     <y>164</y>
+     <x>129</x>
+     <y>162</y>
     </hint>
    </hints>
   </connection>
