@@ -11,13 +11,20 @@ import sys
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QMainWindow, QApplication
 from PyQt5.uic import loadUi
+from PyQt5.QtGui import QIcon
+from errorshandling import bledy
+from core import obliczenia
+
+# =============================================================================
+# Klasa okna wyniku calkowania
+# =============================================================================
 
 
 class MainWin(QMainWindow):
     def __init__(self):
         super(MainWin, self).__init__()
         loadUi("main_win.ui", self)
-        self.setWindowIcon(QIcon('kalkulator.png'))
+        self.setWindowIcon(QIcon('ikona.png'))
 
     def fun_wynikRownania(self):
         funkcja = self.edt_funkcja.text()
@@ -26,9 +33,20 @@ class MainWin(QMainWindow):
     def fun_calka(self):
         print("fun calka")
         funkcja = self.edt_funkcja.text()
+        po = self.edt_funkcjaPo.text()
+
+        przerwij = bledy.PoprawneDaneIntDif(self, funkcja, po)
+
+        if przerwij is False:
+            return
+
         oknoCalki = wynCalka()
-        oknoCalki.show()
+
         oknoCalki.tekstFunkcji(funkcja)
+        wynik = obliczenia.calkowanie(funkcja, po)
+        oknoCalki.tekstCalki(wynik)
+        oknoCalki.show()
+        oknoCalki.exec_()
 
         # widget.addWidget(oknoCalki)
         # widget.setCurrentIndex(widget.currentIndex()+1)
@@ -42,6 +60,10 @@ class MainWin(QMainWindow):
     def fun_mscZerowe(self):
         print("fun zerowe")
 
+# =============================================================================
+# Klasa okna wyniku calkowania
+# =============================================================================
+
 
 class wynCalka(QDialog):
     def __init__(self):
@@ -51,8 +73,15 @@ class wynCalka(QDialog):
 
     def tekstFunkcji(self, funkcja):
         self.lab_funkcja.setText(funkcja)
-        print("wchodze")
-        self.Btn_back.clicked.connect(self.main_window.show)
+        print("tekst funkcji")
+
+    def tekstCalki(self, wynik):
+        self.lab_wynCalka.setText(wynik)
+        print("tekst calki")
+
+# =============================================================================
+# End of classes
+# =============================================================================
 
 
 app = QApplication(sys.argv)
@@ -61,6 +90,16 @@ widget = QtWidgets.QStackedWidget()
 widget.addWidget(mainWindow)
 widget.show()
 app.exec_()
+
+
+
+
+
+
+
+
+
+
 
 # class Manager():
 #     def __init__(self):
