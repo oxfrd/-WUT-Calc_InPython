@@ -9,11 +9,16 @@ Calculator app to Python subject on WUT
 
 import sys
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QMainWindow, QApplication
+from PyQt5.QtWidgets import QMainWindow, QApplication, QCheckBox
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QIcon
+
+
 from errorshandling import bledy
 from core import obliczenia
+from wynCalka import wynCalka
+from wynPochodna import wynPochodna
+from wynRown import wynRown
 
 # =============================================================================
 # Klasa okna wyniku calkowania
@@ -26,14 +31,20 @@ class MainWin(QMainWindow):
         loadUi("main_win.ui", self)
         self.setWindowIcon(QIcon('ikona.png'))
 
-    def fun_wynikRownania(self):
-        funkcja = self.edt_funkcja.text()
-        print("Hej: ", funkcja)
-
     def fun_calka(self):
         print("fun calka")
         funkcja = self.edt_funkcja.text()
         po = self.edt_funkcjaPo.text()
+        od = self.edt_od.text()
+        do = self.edt_do.text()
+        czyOznaczona = False
+
+        if self.cbox_ozn.isChecked():
+            czyOznaczona = True
+            przerwij = bledy.sprawdzOdDO(self, od, do)
+            print("oznaczona")
+            if przerwij is False:
+                return
 
         przerwij = bledy.PoprawneDaneIntDif(self, funkcja, po)
 
@@ -43,41 +54,56 @@ class MainWin(QMainWindow):
         oknoCalki = wynCalka()
 
         oknoCalki.tekstFunkcji(funkcja)
-        wynik = obliczenia.calkowanie(funkcja, po)
+        if czyOznaczona:
+            wynik = obliczenia.calkowanieOzn(funkcja, po, od, do)
+        else:
+            wynik = obliczenia.calkowanie(funkcja, po)
         oknoCalki.tekstCalki(wynik)
         oknoCalki.show()
         oknoCalki.exec_()
 
-        # widget.addWidget(oknoCalki)
-        # widget.setCurrentIndex(widget.currentIndex()+1)
-
     def fun_pochodna(self):
         print("fun pochodna")
+        funkcja = self.edt_funkcja.text()
+        po = self.edt_funkcjaPo.text()
+
+        przerwij = bledy.PoprawneDaneIntDif(self, funkcja, po)
+
+        if przerwij is False:
+            return
+
+        oknoPochodnej = wynPochodna()
+        oknoPochodnej.tekstFunkcji(funkcja)
+        wynik = obliczenia.pochodna(funkcja, po)
+        oknoPochodnej.tekstPochodnej(wynik)
+        oknoPochodnej.show()
+        oknoPochodnej.exec_()
+
+    def fun_wynikRownania(self):
+        print("fun pochodna")
+        funkcja = self.edt_funkcja.text()
+
+        zmienne = []
+        for i in range(6):
+            zmienne.append(0)
+
+        przerwij = bledy.PoprawneDaneIntDif(self, funkcja)
+
+        if przerwij is False:
+            return
+
+        oknoRown = wynRown()
+        wynRown.tekstFunkcji(funkcja)
+        wynik = obliczenia.wynRownania(funkcja, zmienne)
+        oknoRown.tekstPochodnej(wynik)
+        oknoRown.show()
+        oknoRown.exec_()
 
     def fun_wykres(self):
         print("fun wykres")
 
     def fun_mscZerowe(self):
         print("fun zerowe")
-
-# =============================================================================
-# Klasa okna wyniku calkowania
-# =============================================================================
-
-
-class wynCalka(QDialog):
-    def __init__(self):
-        super(wynCalka, self).__init__()
-        loadUi("wynCalka.ui", self)
-        self.Btn_back.clicked.connect(self.hide)
-
-    def tekstFunkcji(self, funkcja):
-        self.lab_funkcja.setText(funkcja)
-        print("tekst funkcji")
-
-    def tekstCalki(self, wynik):
-        self.lab_wynCalka.setText(wynik)
-        print("tekst calki")
 
 # =============================================================================
 # End of classes
@@ -90,15 +116,6 @@ widget = QtWidgets.QStackedWidget()
 widget.addWidget(mainWindow)
 widget.show()
 app.exec_()
-
-
-
-
-
-
-
-
-
 
 
 # class Manager():
