@@ -9,7 +9,7 @@ Calculator app to Python subject on WUT
 
 import sys
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QMainWindow, QApplication, QCheckBox
+from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QIcon
 
@@ -18,7 +18,7 @@ from errorshandling import bledy
 from core import obliczenia
 from wynCalka import wynCalka
 from wynPochodna import wynPochodna
-from wynRown import wynRown
+from wynZero import wynZero
 
 # =============================================================================
 # Klasa okna wyniku calkowania
@@ -79,31 +79,25 @@ class MainWin(QMainWindow):
         oknoPochodnej.show()
         oknoPochodnej.exec_()
 
-    def fun_wynikRownania(self):
-        print("fun pochodna")
+    def fun_mscZerowe(self):
+        print("fun zerowe")
         funkcja = self.edt_funkcja.text()
-
-        zmienne = []
-        for i in range(6):
-            zmienne.append(0)
-
-        przerwij = bledy.PoprawneDaneIntDif(self, funkcja)
+        przerwij = bledy.PoprawneDaneRow(self, funkcja)
 
         if przerwij is False:
             return
-
-        oknoRown = wynRown()
-        wynRown.tekstFunkcji(funkcja)
-        wynik = obliczenia.wynRownania(funkcja, zmienne)
-        oknoRown.tekstPochodnej(wynik)
-        oknoRown.show()
-        oknoRown.exec_()
-
+        
+        oknoZer = wynZero()
+        oknoZer.tekstFunkcji(funkcja)
+        wynik = obliczenia.MiejsceZerowe(funkcja)
+        oknoZer.tekstWynik(wynik)
+        oknoZer.show()
+        oknoZer.exec_()
+        
     def fun_wykres(self):
         print("fun wykres")
 
-    def fun_mscZerowe(self):
-        print("fun zerowe")
+
 
 # =============================================================================
 # End of classes

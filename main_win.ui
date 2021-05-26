@@ -10,19 +10,19 @@
     <x>0</x>
     <y>0</y>
     <width>550</width>
-    <height>250</height>
+    <height>200</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>550</width>
-    <height>250</height>
+    <height>200</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>550</width>
-    <height>250</height>
+    <height>200</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -97,16 +97,6 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="Btn_Wynik_row">
-       <property name="text">
-        <string>Wynik równania</string>
-       </property>
-       <property name="shortcut">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="Btn_Miejsca_zerowe">
        <property name="text">
         <string>Miejsca zerowe</string>
@@ -133,140 +123,6 @@
     <property name="dragEnabled">
      <bool>false</bool>
     </property>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_4">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>170</y>
-      <width>491</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="boxLayo_xyz">
-     <item>
-      <widget class="QLabel" name="lab_x">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>x =</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="edt_x">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>54</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="dragEnabled">
-        <bool>false</bool>
-       </property>
-       <property name="clearButtonEnabled">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="cbox_x">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="boxLayo_yz">
-       <item>
-        <widget class="QLabel" name="lab_y">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>y =</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="edt_y">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>54</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="dragEnabled">
-          <bool>false</bool>
-         </property>
-         <property name="clearButtonEnabled">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="cbox_y">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="boxLayo_z">
-         <item>
-          <widget class="QLabel" name="lab_z">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>z =</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="edt_z">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>54</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="dragEnabled">
-            <bool>false</bool>
-           </property>
-           <property name="clearButtonEnabled">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="cbox_z">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-    </layout>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">
@@ -412,14 +268,7 @@
   <tabstop>Btn_Calka</tabstop>
   <tabstop>Btn_Pochodna</tabstop>
   <tabstop>Btn_Wykres</tabstop>
-  <tabstop>Btn_Wynik_row</tabstop>
   <tabstop>Btn_Miejsca_zerowe</tabstop>
-  <tabstop>edt_x</tabstop>
-  <tabstop>cbox_x</tabstop>
-  <tabstop>edt_y</tabstop>
-  <tabstop>cbox_y</tabstop>
-  <tabstop>edt_z</tabstop>
-  <tabstop>cbox_z</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -472,22 +321,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>Btn_Wynik_row</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>fun_wynikRownania()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>411</x>
-     <y>110</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>385</x>
-     <y>96</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>Btn_Miejsca_zerowe</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -500,54 +333,6 @@
     <hint type="destinationlabel">
      <x>468</x>
      <y>144</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>cbox_x</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>edt_x</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>148</x>
-     <y>160</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>129</x>
-     <y>162</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>cbox_y</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>edt_y</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>325</x>
-     <y>153</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>255</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>cbox_z</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>edt_z</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>499</x>
-     <y>153</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>429</x>
-     <y>153</y>
     </hint>
    </hints>
   </connection>

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>550</width>
+    <width>900</width>
     <height>200</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>550</width>
+    <width>900</width>
     <height>200</height>
    </size>
   </property>
@@ -65,9 +65,9 @@
   <widget class="QWidget" name="verticalLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>150</x>
      <y>20</y>
-     <width>421</width>
+     <width>731</width>
      <height>131</height>
     </rect>
    </property>
@@ -88,10 +88,10 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="Btn_back">
    <property name="geometry">
     <rect>
-     <x>200</x>
+     <x>380</x>
      <y>160</y>
      <width>150</width>
      <height>25</height>
@@ -105,7 +105,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>Btn_back</sender>
    <signal>clicked()</signal>
    <receiver>WynZerowe</receiver>
    <slot>close()</slot>

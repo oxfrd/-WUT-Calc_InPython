@@ -4,7 +4,8 @@ Created on Mon May 24 20:20:31 2021
 
 @author: oxford
 """
-import sympy as
+from sympy import symbols, diff, integrate, solve, Function
+f = Function('f')
 
 
 class obliczenia():
@@ -56,16 +57,14 @@ class obliczenia():
         print(string)
         return string
 
-    def wynRownania(Funkcja, *tablica):
-        if tablica[0] == 1:
-            x = symbols('x')
-            wynik = diff(Funkcja, x)
-        if tablica[2] == 1:
-            y = symbols('y')
-            wynik = diff(Funkcja, y)
-        if tablica[4] == 1:
-            z = symbols('z')
-            wynik = diff(Funkcja, z)
+        string = str(wynik)
+        print(string)
+        return string
+
+    def MiejsceZerowe(Funkcja):
+
+        x, y, z = symbols('x, y, z')
+        wynik = solve(Funkcja)
 
         string = str(wynik)
         print(string)

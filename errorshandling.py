@@ -29,6 +29,12 @@ class bledy():
 
         return True
 
+    def PoprawneDaneRow(self, fun):
+
+        if bledy.brakFunkcji(self, fun) is False:
+            return False
+        return True
+
     def brakFunkcji(self, tekst):
         if len(tekst) == 0:
             QMessageBox.critical(self, 'Błąd',
@@ -52,22 +58,19 @@ class bledy():
         return True
 
     def sprawdzOdDO(self, tekst, tekst2):
-        # if isinstance(tekst, int) or isinstance(tekst, float):
-        #     pass
-        # else:
-        #     QMessageBox.critical(self, 'Błąd',
-        #                          "Wprowadź poprawne warunki brzegowe!")
-        #     return False
-
+        exception = False
         try:
             od = int(tekst)
         except ValueError:
             try:
                 od = float(tekst)
             except ValueError:
-                QMessageBox.critical(self, 'Błąd',
-                                     "Wprowadź poprawne warunki brzegowe!")
-                return False
+                if tekst.find('pi') > -1 or tekst.find('sqrt') > -1 or tekst.find('log') > -1 or tekst.find('ln') > -1 or tekst.find('sin') > -1 or tekst.find("cos") > -1 or tekst.find('tan') > -1 or tekst.find('ctan') > -1:
+                    exception = True
+                else:
+                    QMessageBox.critical(self, 'Błąd! [1]',
+                                         "Wprowadź poprawne warunki brzegowe!")
+                    return False
             else:
                 pass
         else:
@@ -79,9 +82,12 @@ class bledy():
             try:
                 do = float(tekst2)
             except ValueError:
-                QMessageBox.critical(self, 'Błąd',
-                                     "Wprowadź poprawne warunki brzegowe!")
-                return False
+                if tekst.find('pi') > -1 or tekst.find('sqrt') > -1 or tekst.find('log') > -1 or tekst.find('ln') > -1 or tekst.find('sin') > -1 or tekst.find("cos") > -1 or tekst.find('tan') > -1 or tekst.find('ctan') > -1:
+                    exception = True
+                else:
+                    QMessageBox.critical(self, 'Błąd! [1]',
+                                         "Wprowadź poprawne warunki brzegowe!")
+                    return False
             else:
                 pass
         else:
@@ -89,12 +95,12 @@ class bledy():
 
         if len(tekst) == 0 or len(tekst2) == 0:
 
-            QMessageBox.critical(self, 'Błąd',
+            QMessageBox.critical(self, 'Błąd! [3]',
                                  "Wprowadź poprawne warunki brzegowe!")
             return False
 
-        if od > do:
+        if (exception is False) and (od > do):
 
-            QMessageBox.critical(self, 'Błąd',
+            QMessageBox.critical(self, 'Błąd! [4]',
                                  "Wartosć 'od' jest większa niż 'do'. Zweryfikuj dane warunki brzegowe")
             return False
