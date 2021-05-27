@@ -13,12 +13,13 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QIcon
 
-
 from errorshandling import bledy
 from core import obliczenia
 from wynCalka import wynCalka
 from wynPochodna import wynPochodna
 from wynZero import wynZero
+from wynWykres import wynWykres
+
 
 # =============================================================================
 # Klasa okna wyniku calkowania
@@ -58,6 +59,11 @@ class MainWin(QMainWindow):
             wynik = obliczenia.calkowanieOzn(funkcja, po, od, do)
         else:
             wynik = obliczenia.calkowanie(funkcja, po)
+
+        if wynik is False:
+            bledy.zlaFunkcja(self)
+            return
+
         oknoCalki.tekstCalki(wynik)
         oknoCalki.show()
         oknoCalki.exec_()
@@ -75,6 +81,8 @@ class MainWin(QMainWindow):
         oknoPochodnej = wynPochodna()
         oknoPochodnej.tekstFunkcji(funkcja)
         wynik = obliczenia.pochodna(funkcja, po)
+        if wynik is False:
+            bledy.zlaFunkcja(self)
         oknoPochodnej.tekstPochodnej(wynik)
         oknoPochodnej.show()
         oknoPochodnej.exec_()
@@ -86,18 +94,27 @@ class MainWin(QMainWindow):
 
         if przerwij is False:
             return
-        
+
         oknoZer = wynZero()
         oknoZer.tekstFunkcji(funkcja)
         wynik = obliczenia.MiejsceZerowe(funkcja)
         oknoZer.tekstWynik(wynik)
         oknoZer.show()
         oknoZer.exec_()
-        
+
     def fun_wykres(self):
         print("fun wykres")
+        funkcja = self.edt_funkcja.text()
+        przerwij = bledy.PoprawneDaneRow(self, funkcja)
 
+        if przerwij is False:
+            return
 
+        if wynWykres.rysujWykres(self, funkcja) is True:
+            bledy.bladWykresu(self)
+            return
+        else:
+            return
 
 # =============================================================================
 # End of classes
@@ -110,20 +127,3 @@ widget = QtWidgets.QStackedWidget()
 widget.addWidget(mainWindow)
 widget.show()
 app.exec_()
-
-
-# class Manager():
-#     def __init__(self):
-#         super(Manager, self).__init__()
-#         self.main_window = MainWin()
-#         self.wynik_calki = wynCalka()
-
-#         self.main_window.Btn_Calka.clicked.connect(self.wynik_calki.show)
-#         self.wynik_calki.Btn_back.clicked.connect(self.main_window.show)
-
-#         self.main_window.show()
-
-
-# app = QApplication(sys.argv)
-# manager = Manager()
-# sys.exit(app.exec_())

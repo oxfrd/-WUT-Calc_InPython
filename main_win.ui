@@ -28,6 +28,9 @@
   <property name="windowTitle">
    <string>Kalkulator naukowy</string>
   </property>
+  <property name="whatsThis">
+   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;nic&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="lab_wprFun">
     <property name="geometry">
@@ -59,6 +62,9 @@
     <layout class="QHBoxLayout" name="boxLayo_Buttons">
      <item>
       <widget class="QPushButton" name="Btn_Calka">
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Halko&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Całka</string>
        </property>
@@ -116,6 +122,9 @@
       <width>501</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="whatsThis">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tekst funkcji&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="frame">
      <bool>true</bool>
@@ -257,14 +266,40 @@
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>550</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionZamknij"/>
+   </widget>
+   <addaction name="menuMenu"/>
+  </widget>
   <action name="actionFile">
    <property name="text">
     <string>File</string>
    </property>
   </action>
+  <action name="actionZamknij">
+   <property name="text">
+    <string>Zamknij</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>edt_funkcja</tabstop>
+  <tabstop>edt_funkcjaPo</tabstop>
+  <tabstop>cbox_ozn</tabstop>
+  <tabstop>edt_od</tabstop>
+  <tabstop>edt_do</tabstop>
   <tabstop>Btn_Calka</tabstop>
   <tabstop>Btn_Pochodna</tabstop>
   <tabstop>Btn_Wykres</tabstop>

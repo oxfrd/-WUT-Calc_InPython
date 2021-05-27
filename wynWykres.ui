@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WynRownania</class>
+ <widget class="QDialog" name="WynRownania">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>550</width>
+    <height>200</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1000</width>
+    <height>1000</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="Btn_back">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>760</y>
+     <width>150</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Powrót</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="fig_wykres" native="true">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>20</y>
+     <width>900</width>
+     <height>700</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>900</width>
+     <height>700</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>900</width>
+     <height>700</height>
+    </size>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>Btn_back</sender>
+   <signal>clicked()</signal>
+   <receiver>WynRownania</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>212</x>
+     <y>172</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>192</x>
+     <y>170</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>fun_backToMain()</slot>
+ </slots>
+</ui>

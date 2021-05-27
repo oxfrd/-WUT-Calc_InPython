@@ -29,11 +29,22 @@ class bledy():
 
         return True
 
+    def bladWykresu(self):
+        QMessageBox.critical(self, 'Błąd!',
+                             "Wprowadź poprawną funkcję!")
+        return False
+
     def PoprawneDaneRow(self, fun):
 
         if bledy.brakFunkcji(self, fun) is False:
             return False
         return True
+
+    def zlaFunkcja(self):
+
+        QMessageBox.critical(self, 'Błąd',
+                             "Wprowadź poprawną funkcję!")
+        return
 
     def brakFunkcji(self, tekst):
         if len(tekst) == 0:
@@ -56,6 +67,11 @@ class bledy():
 
             return False
         return True
+
+    def zlaCalkaOzn(self):
+        QMessageBox.critical(self, 'Błąd!',
+                             "Wprowadź poprawną funkcję!")
+        return False
 
     def sprawdzOdDO(self, tekst, tekst2):
         exception = False
@@ -104,3 +120,5 @@ class bledy():
             QMessageBox.critical(self, 'Błąd! [4]',
                                  "Wartosć 'od' jest większa niż 'do'. Zweryfikuj dane warunki brzegowe")
             return False
+        else:
+            return

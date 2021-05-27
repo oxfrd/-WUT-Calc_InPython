@@ -11,55 +11,66 @@ f = Function('f')
 class obliczenia():
 
     def calkowanie(Funkcja, PoCzym):
-        if PoCzym == 'x':
-            x = symbols('x')
-            wynik = integrate(Funkcja, x)
-        if PoCzym == 'y':
-            y = symbols('y')
-            wynik = integrate(Funkcja, y)
-        if PoCzym == 'z':
-            z = symbols('z')
-            wynik = integrate(Funkcja, z)
-
-        print(wynik)
-        string = str(wynik)
-        print(string)
-        return string
+        try:
+            if PoCzym == 'x':
+                x = symbols('x')
+                wynik = integrate(Funkcja, x)
+            if PoCzym == 'y':
+                y = symbols('y')
+                wynik = integrate(Funkcja, y)
+            if PoCzym == 'z':
+                z = symbols('z')
+                wynik = integrate(Funkcja, z)
+        except TypeError:
+            return False
+        else:
+            print(wynik)
+            string = str(wynik)
+            print(string)
+            if string.find('integrate') > -1:
+                return False
+            return string
 
     def calkowanieOzn(Funkcja, PoCzym, od, do):
-        if PoCzym == 'x':
-            x = symbols('x')
-            wynik = integrate(Funkcja, (x, od, do))
-        if PoCzym == 'y':
-            y = symbols('y')
-            wynik = integrate(Funkcja, (y, od, do))
-        if PoCzym == 'z':
-            z = symbols('z')
-            wynik = integrate(Funkcja, (z, od, do))
-
-        print(wynik)
-        string = str(wynik)
-        print(string)
-        return string
+        try:
+            if PoCzym == 'x':
+                x = symbols('x')
+                wynik = integrate(Funkcja, (x, od, do))
+                if PoCzym == 'y':
+                    y = symbols('y')
+                    wynik = integrate(Funkcja, (y, od, do))
+                    if PoCzym == 'z':
+                        z = symbols('z')
+                        wynik = integrate(Funkcja, (z, od, do))
+        except TypeError:
+            return False
+        else:
+            print(wynik)
+            string = str(wynik)
+            print(string)
+            if string.find('Integral') > -1:
+                return False
+            return string
 
     def pochodna(Funkcja, PoCzym):
-        if PoCzym == 'x':
-            x = symbols('x')
-            wynik = diff(Funkcja, x)
-        if PoCzym == 'y':
-            y = symbols('y')
-            wynik = diff(Funkcja, y)
-        if PoCzym == 'z':
-            z = symbols('z')
-            wynik = diff(Funkcja, z)
-
-        string = str(wynik)
-        print(string)
-        return string
-
-        string = str(wynik)
-        print(string)
-        return string
+        try:
+            if PoCzym == 'x':
+                x = symbols('x')
+                wynik = diff(Funkcja, x)
+            if PoCzym == 'y':
+                y = symbols('y')
+                wynik = diff(Funkcja, y)
+            if PoCzym == 'z':
+                z = symbols('z')
+                wynik = diff(Funkcja, z)
+        except TypeError:
+            return False
+        else:
+            string = str(wynik)
+            print(string)
+            if string.find('Derivative') > -1:
+                return False
+            return string
 
     def MiejsceZerowe(Funkcja):
 
@@ -68,4 +79,7 @@ class obliczenia():
 
         string = str(wynik)
         print(string)
+        if len(string) == 0:
+            return False
+
         return string
