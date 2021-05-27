@@ -20,19 +20,43 @@ from wynPochodna import wynPochodna
 from wynZero import wynZero
 from wynWykres import wynWykres
 
-
 # =============================================================================
-# Klasa okna wyniku calkowania
+# Klasa glownego okna
 # =============================================================================
 
 
 class MainWin(QMainWindow):
+    """
+    Class of main window.
+
+    This class 
+
+    Returns
+    -------
+    None.
+
+    """
+
     def __init__(self):
+        """Constructo of class MainWin."""
         super(MainWin, self).__init__()
         loadUi("main_win.ui", self)
         self.setWindowIcon(QIcon('ikona.png'))
 
     def fun_calka(self):
+        """
+        Dialog window with integrating result.
+
+        Fun is being called when Btn_calka is clicked.
+        It takes function from edt_funkcja, give it to core,
+        checking if it's definite integrate. Depends on that
+        chose calculating function and print result.
+
+        Returns
+        -------
+        None.
+
+        """
         print("fun calka")
         funkcja = self.edt_funkcja.text()
         po = self.edt_funkcjaPo.text()
@@ -69,6 +93,18 @@ class MainWin(QMainWindow):
         oknoCalki.exec_()
 
     def fun_pochodna(self):
+        """
+        Dialog window with derivative result.
+
+        Function is being called when Btn_pochodna is clicked.
+        It takes function from edt_funkcja, give it to core
+        to calculating function and print result.
+
+        Returns
+        -------
+        None.
+
+        """
         print("fun pochodna")
         funkcja = self.edt_funkcja.text()
         po = self.edt_funkcjaPo.text()
@@ -83,11 +119,26 @@ class MainWin(QMainWindow):
         wynik = obliczenia.pochodna(funkcja, po)
         if wynik is False:
             bledy.zlaFunkcja(self)
+            return
+
         oknoPochodnej.tekstPochodnej(wynik)
         oknoPochodnej.show()
         oknoPochodnej.exec_()
 
     def fun_mscZerowe(self):
+        """
+        Dialog window with zero points result.
+
+        Function is being called when Btn_MiejscaZerowe
+        is clicked. It takes function from edt_funkcja,
+        give it to core to calculating function and
+        print result.
+
+        Returns
+        -------
+        None.
+
+        """
         print("fun zerowe")
         funkcja = self.edt_funkcja.text()
         przerwij = bledy.PoprawneDaneRow(self, funkcja)
@@ -98,11 +149,29 @@ class MainWin(QMainWindow):
         oknoZer = wynZero()
         oknoZer.tekstFunkcji(funkcja)
         wynik = obliczenia.MiejsceZerowe(funkcja)
+
+        if wynik is False:
+            bledy.zlaFunkcja(self)
+            return
+
         oknoZer.tekstWynik(wynik)
         oknoZer.show()
         oknoZer.exec_()
 
     def fun_wykres(self):
+        """
+        Generate plot.
+
+        Function is being called when Btn_Wykres
+        is clicked. It takes function from edt_funkcja,
+        give it to core to calculating function and
+        print result.
+
+        Returns
+        -------
+        None.
+
+        """
         print("fun wykres")
         funkcja = self.edt_funkcja.text()
         przerwij = bledy.PoprawneDaneRow(self, funkcja)
@@ -112,9 +181,7 @@ class MainWin(QMainWindow):
 
         if wynWykres.rysujWykres(self, funkcja) is True:
             bledy.bladWykresu(self)
-            return
-        else:
-            return
+        return
 
 # =============================================================================
 # End of classes

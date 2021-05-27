@@ -27,7 +27,7 @@ class obliczenia():
             print(wynik)
             string = str(wynik)
             print(string)
-            if string.find('integrate') > -1:
+            if string.find('Integral') > -1:
                 return False
             return string
 
@@ -73,13 +73,15 @@ class obliczenia():
             return string
 
     def MiejsceZerowe(Funkcja):
-
-        x, y, z = symbols('x, y, z')
-        wynik = solve(Funkcja)
-
-        string = str(wynik)
-        print(string)
-        if len(string) == 0:
+        try:
+            x, y, z = symbols('x, y, z')
+            wynik = solve(Funkcja)
+        except TypeError:
             return False
+        else:
+            string = str(wynik)
+            print(string)
+            if string == "[]":
+                string = "Brak miejsc zerowych"
 
-        return string
+            return string
