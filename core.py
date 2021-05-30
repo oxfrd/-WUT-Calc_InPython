@@ -9,8 +9,29 @@ f = Function('f')
 
 
 class obliczenia():
+    """
+    Class of calculating.
+
+    This class is handling calculations based on sympy
+    library.
+    """
 
     def calkowanie(Funkcja, PoCzym):
+        """
+        Indefinite itegral of passed function.
+
+        Parameters
+        ----------
+        Funkcja : string
+            Function to be integrated.
+        PoCzym : string
+            Integration variable.
+
+        Returns
+        -------
+        bool -- "False" if integration return error.
+        string -- result of operation if there is not error.
+        """
         try:
             if PoCzym == 'x':
                 x = symbols('x')
@@ -32,6 +53,25 @@ class obliczenia():
             return string
 
     def calkowanieOzn(Funkcja, PoCzym, od, do):
+        """
+        Definite integral of passed function.
+
+        Parameters
+        ----------
+        Funkcja : string
+            Function to be integrated.
+        PoCzym : string
+            Integration variable.
+        od : string
+            Integrating from 'od'
+        do : string
+            Integration to 'do'.
+
+        Returns
+        -------
+        bool -- "False" if 'integration' return error.
+        string -- result of operation if there is not error.
+        """
         try:
             if PoCzym == 'x':
                 x = symbols('x')
@@ -53,6 +93,21 @@ class obliczenia():
             return string
 
     def pochodna(Funkcja, PoCzym):
+        """
+        Diffrentiate of passed function.
+
+        Parameters
+        ----------
+        Funkcja : string
+            Function to be diffrentiated.
+        PoCzym : string
+            Deffretiation variable.
+
+        Returns
+        -------
+        bool -- "False" if 'diff' return error.
+        string -- result of operation if there is not error.
+        """
         try:
             if PoCzym == 'x':
                 x = symbols('x')
@@ -73,6 +128,18 @@ class obliczenia():
             return string
 
     def MiejsceZerowe(Funkcja):
+        """
+        Zero points of passed function.
+
+        Parameters
+        ----------
+        Funkcja : string
+            Function to be calculated.
+        Returns
+        -------
+        bool -- "False" if 'diff' return error.
+        string -- result of operation if there is not error.
+        """
         try:
             x, y, z = symbols('x, y, z')
             wynik = solve(Funkcja)

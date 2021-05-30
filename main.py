@@ -29,12 +29,8 @@ class MainWin(QMainWindow):
     """
     Class of main window.
 
-    This class 
-
-    Returns
-    -------
-    None.
-
+    This class is handling main window of application functions
+    after clicking of any buttons.
     """
 
     def __init__(self):
