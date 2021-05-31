@@ -28,7 +28,7 @@
   <widget class="QPushButton" name="Btn_back">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>420</x>
      <y>760</y>
      <width>150</width>
      <height>25</height>
@@ -38,30 +38,29 @@
     <string>Powrót</string>
    </property>
   </widget>
-  <widget class="QWidget" name="fig_wykres" native="true">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>20</x>
      <y>20</y>
-     <width>900</width>
-     <height>700</height>
+     <width>961</width>
+     <height>731</height>
     </rect>
    </property>
-   <property name="minimumSize">
-    <size>
-     <width>900</width>
-     <height>700</height>
-    </size>
+   <property name="text">
+    <string/>
    </property>
-   <property name="maximumSize">
-    <size>
-     <width>900</width>
-     <height>700</height>
-    </size>
+   <property name="pixmap">
+    <pixmap resource="resorce.qrc">:/image/xy.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resorce.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>Btn_back</sender>

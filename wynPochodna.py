@@ -25,7 +25,7 @@ class wynPochodna(QDialog):
         None.
         """
         super(wynPochodna, self).__init__()
-        loadUi("wynPochodna.ui", self)
+        loadUi('wynPochodna.ui', self)
         self.Btn_back.clicked.connect(self.hide)
 
     def tekstFunkcji(self, funkcja):

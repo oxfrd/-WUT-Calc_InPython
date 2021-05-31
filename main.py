@@ -11,7 +11,7 @@ import sys
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic import loadUi
-from PyQt5.QtGui import QIcon
+from sympy.plotting import plot
 
 from errorshandling import bledy
 from core import obliczenia
@@ -19,6 +19,7 @@ from wynCalka import wynCalka
 from wynPochodna import wynPochodna
 from wynZero import wynZero
 from wynWykres import wynWykres
+
 
 # =============================================================================
 # Klasa glownego okna
@@ -36,8 +37,7 @@ class MainWin(QMainWindow):
     def __init__(self):
         """Constructo of class MainWin."""
         super(MainWin, self).__init__()
-        loadUi("main_win.ui", self)
-        self.setWindowIcon(QIcon('ikona.png'))
+        loadUi('main_win.ui', self)
 
     def fun_calka(self):
         """
@@ -166,7 +166,6 @@ class MainWin(QMainWindow):
         Returns
         -------
         None.
-
         """
         print("fun wykres")
         funkcja = self.edt_funkcja.text()
@@ -177,6 +176,10 @@ class MainWin(QMainWindow):
 
         if wynWykres.rysujWykres(self, funkcja) is True:
             bledy.bladWykresu(self)
+            return
+        wykresOkno = wynWykres()
+        wykresOkno.show()
+        wykresOkno.exec_()
         return
 
 # =============================================================================

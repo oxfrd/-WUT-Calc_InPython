@@ -21,7 +21,7 @@ class wynZero(QDialog):
         None.
         """
         super(wynZero, self).__init__()
-        loadUi("wynMiejscaZerowe.ui", self)
+        loadUi('wynMiejscaZerowe.ui', self)
         self.Btn_back.clicked.connect(self.hide)
 
     def tekstFunkcji(self, funkcja):

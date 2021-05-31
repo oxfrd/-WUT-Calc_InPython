@@ -25,7 +25,7 @@ class wynCalka(QDialog):
         None.
         """
         super(wynCalka, self).__init__()
-        loadUi("wynCalka.ui", self)
+        loadUi('wynCalka.ui', self)
         self.Btn_back.clicked.connect(self.hide)
 
     def tekstFunkcji(self, funkcja):
